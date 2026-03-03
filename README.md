@@ -125,6 +125,43 @@ Available commands:
 
 ---
 
+## Project Structure
+
+The project follows a modular architecture where each feature is isolated in its own module.
+
+```
+rustybundle/
+├── src/
+│   ├── main.rs
+│   ├── config/
+│   │   └── mod.rs
+│   ├── bundle/
+│   │   ├── mod.rs
+│   │   └── model.rs
+│   ├── network/
+│   │   ├── mod.rs
+│   │   ├── server.rs
+│   │   ├── client.rs
+│   │   └── protocol.rs
+│   ├── storage/
+│   │   ├── mod.rs
+│   │   └── storage.rs
+│   ├── routing/
+│   │   ├── mod.rs
+│   │   └── engine.rs
+│   └── cli/
+│       ├── mod.rs
+│       └── commands.rs
+├── config/
+│   └── node1.toml
+├── docs/
+│   └── architecture.png
+├── tests/
+├── Cargo.toml
+└── README.md
+```
+---
+
 ## Running the Project
 
 ### 1. Build
