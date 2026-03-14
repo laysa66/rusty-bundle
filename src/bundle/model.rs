@@ -34,7 +34,7 @@ pub enum MsgStatus { // TODO: is it correct for the moment to use these for the 
 
 //Bundle 
 pub struct Bundle {
-    pub id: Uuid,                  // id unique for the bundle
+    pub id: String,                  // id unique for the bundle
     pub source: Node,                // the source node of the bundle
     pub destination: Node,           // the destination node of the bundle
     pub timestamp: DateTime<Utc>,    // date and time of the bundle creation
@@ -48,7 +48,8 @@ impl Bundle {
     pub fn new(source: Node, destination: Node, msg: String, ttl: u64) -> Self { // for the new bundle we need the source, destination, message and ttl 
         //TODO: is it correct htat i added the ttl for the time to live of the bundle or we don't need it in the structure 
         Bundle {
-            id: Uuid::new_v4(),
+            id: Uuid::new_v4().to_string(), // generate a unique id for the bundle using uuid version 4 and convert it to string before storing it in the json file
+                                            // more information inside the instructions.md file in the feat21-imple…D-generation section
             source,
             destination,
             timestamp: Utc::now(),
