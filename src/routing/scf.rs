@@ -11,7 +11,10 @@ pub fn store(bundle: &mut Bundle, bundle_manager: &mut BundleManager) {
 
 // drop bundles that have exceeded their TTL
 // function to be called at the start of the routing process to clean up expired bundles
-pub fn drop_expired_bundles(bundle_manager: &mut impl BundleStore) {
+pub fn drop_expired_bundles(bundle_manager: &mut BundleManager) {
+    
+    //TODO: fix after creating Bundle Manager and Storage Layer
+
     let now = Utc::now();
 
     //collection of the ids of the bundles that have expired (compare how old the bundle is with the bundle's ttl)
@@ -23,12 +26,12 @@ pub fn drop_expired_bundles(bundle_manager: &mut impl BundleStore) {
         .collect();
 
     for id in &expired {
-        bundle_manager.delete(id);
+        bundle_manager.delete_bundle(id);
     }
 }
 
 // function called when a contact opportunity comes up and returns bubdkes to forward to the next hop
-pub fn get_bundles_to_forward(bundle_manager: &mut impl BundleStore, next_hop: Uuid) -> Vec<Bundle> {
+pub fn get_bundles_to_forward(bundle_manager: &mut BundleManager, next_hop: Uuid) -> Vec<Bundle> {
     drop_expired_bundles(bundle_manager);
 
     let candidates: Vec<String> = bundle_manager
