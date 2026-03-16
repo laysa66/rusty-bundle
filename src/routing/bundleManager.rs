@@ -4,7 +4,7 @@ use crate::storage::StorageLayer;
 
 pub struct BundleManager {
     pub node_id: Uuid,
-    pub store: StorageLayer,
+    pub storage: StorageLayer,
 }
 
 impl BundleManager {
