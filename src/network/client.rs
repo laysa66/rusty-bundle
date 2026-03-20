@@ -52,6 +52,7 @@ pub fn connect_to_server(node: &Node) -> Option<TcpStream> {
 
 //not sure about this fuction 
 // to be corrected 
+// i hope this is correct 
 pub fn connect_to_peers(node: &Node,nodes_registry: &HashMap<Uuid, Node>,) -> Result<Vec<(Uuid, TcpStream)>, String> {
 
     // Verify that the registry is not empty
