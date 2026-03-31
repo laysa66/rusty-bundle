@@ -3,14 +3,13 @@ mod routing;
 mod storage;
 use crate::network::protobuf::{deserialize,serialize};
 use crate::routing::model::{Bundle, BundleKind, MsgStatus, Node};
+use crate::storage::StorageLayer;
 use chrono::Utc;
 use uuid::Uuid;
 
-use storage::JsonFileStorage;
-
 fn main() {
     // creer le,ficheir de storage automatiquement au lancer de l'app
-    let storage = Box ::new(JsonFileStorage ::new("./bundles".to_string(), 10));
+    let storage = Box ::new(StorageLayer ::new("./bundles".to_string(), 10));
 
     test_protobuf();
 }
