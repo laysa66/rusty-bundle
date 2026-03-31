@@ -4,7 +4,7 @@ use std::path::{Path, PathBuf};
  
 use crate::routing::model::{Bundle};
 use super::storage_interface::{StorageLayer, StorageError};
-use crate:: JsonFileStorage;
+use crate::storage::JsonFileStorage;
 
 // implementation of StorageLayer
 impl StorageLayer for JsonFileStorage{
